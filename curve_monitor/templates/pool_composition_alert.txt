@@ -1,0 +1,114 @@
+{
+	"blocks": [
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": ":bangbang: Curve Pool Composition Alert :bangbang:",
+				"emoji": true
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*<https://curve.fi/factory-crypto/37|Curve.fi Factory USD Metapool: USDD/3CRV>*"
+			},
+			"accessory": {
+				"type": "image",
+				"image_url": "https://curve.fi/logo.png",
+				"alt_text": "curve_logo"
+			}
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Pool Address:*\n0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea"
+			}
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*Network:*\nethereum"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Tag:*\nfactory-crypto"
+				}
+			]
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*Assets:*\nUSDD, 3CRV"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*TVL:*\n$653,586.42"
+				}
+			]
+		},
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "Composition Breakdown",
+				"emoji": true
+			}
+		},
+		{
+			"type": "context",
+			"elements": [
+				{
+					"type": "image",
+					"image_url": "https://cdn.jsdelivr.net/gh/curvefi/curve-assets/images/assets/0x0c10bf8fcb7bf5412187a595ab97a3609160b5c6.png",
+					"alt_text": "cute cat"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*USDD:*  39,631,812.67 *(63.73%)*"
+				}
+			]
+		},
+		{
+			"type": "context",
+			"elements": [
+				{
+					"type": "image",
+					"image_url": "https://cdn.jsdelivr.net/gh/curvefi/curve-assets/images/assets/0x6c3f90f043a72fa612cbac8115ee7e52bde6e490.png",
+					"alt_text": "cute cat"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*3Crv:*  21,989,108.08 *(36.27%)*"
+				}
+			]
+		},
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "Condition Satisfied:",
+				"emoji": true
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "USDD composition _*above 60%*_ of pool TVL"
+			}
+		},
+		{
+			"type": "divider"
+		}
+	]
+}
