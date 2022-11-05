@@ -1,6 +1,6 @@
 # Curve Config
 NETWORK_IDS = ["ethereum", "avalanche", "fantom", "arbitrum", "optimism", "polygon", "xdai"]
-TAG_IDS = ["crypto", "factory", "factory-crypto"]
+TAG_IDS = ["main", "crypto", "factory", "factory-crypto"]
 CONDITIONS = ["ABOVE", "BELOW"]
 
 # Endpoints:
