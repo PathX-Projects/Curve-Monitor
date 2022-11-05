@@ -1,2 +1,3 @@
 ratelimit
-python-slack-sdk
+slack_sdk
+python-dotenv
