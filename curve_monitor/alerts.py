@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 from curve_monitor.curve import CurveAPI
 from curve_monitor._config import POLLING_PERIOD
-from curve_monitor._logger import logged
+from curve_monitor._logger import logged, logger
 from curve_monitor.slack import SlackClient
 from curve_monitor.db_handler import load_alerts, del_alert
 
@@ -56,6 +56,8 @@ class AlertsProcess:
         self.slack.composition_alert(network='ethereum', tag='factory', pool_data=usdd_pool_data, tokens_data=tokens_usd)
 
     def run(self):
+        logger.info('Alerts process started.')
+
         while True:
             self.poll()
             
