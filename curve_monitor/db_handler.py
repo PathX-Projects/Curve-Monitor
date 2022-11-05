@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 from dataclasses import dataclass
 
-from ._config import *
-from ._logger import logged
+from curve_monitor._config import *
+from curve_monitor._logger import logged
 
 
 DB_PATH = Path(__file__).parent.joinpath('db', 'composition_alerts.json')

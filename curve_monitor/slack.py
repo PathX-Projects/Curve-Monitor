@@ -7,8 +7,8 @@ import json
 from time import time
 from math import ceil
 
-from ._config import *
-from ._logger import logged, logger
+from curve_monitor._config import *
+from curve_monitor._logger import logged, logger
 
 from slack_sdk import WebClient
 

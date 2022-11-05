@@ -1,6 +1,6 @@
 import logging
 
-from .utils import get_logfile
+from curve_monitor.utils import get_logfile
 
 formatter = logging.Formatter('%(module)s : %(levelname)s : %(asctime)s : %(message)s')
 

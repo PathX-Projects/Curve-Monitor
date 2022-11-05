@@ -3,11 +3,11 @@ from slack_sdk import WebClient
 from os import getenv
 from dotenv import load_dotenv
 
-from .curve import CurveAPI
-from ._config import POLLING_PERIOD
-from ._logger import logged
-from .slack import SlackClient
-from .db_handler import load_alerts, del_alert
+from curve_monitor.curve import CurveAPI
+from curve_monitor._config import POLLING_PERIOD
+from curve_monitor._logger import logged
+from curve_monitor.slack import SlackClient
+from curve_monitor.db_handler import load_alerts, del_alert
 
 load_dotenv()
 

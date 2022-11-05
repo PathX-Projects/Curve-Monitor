@@ -3,7 +3,7 @@ from requests import Response
 from requests.exceptions import RequestException
 from ratelimit import limits, sleep_and_retry
 
-from ._config import *
+from curve_monitor._config import *
 
 
 class PoolNotFound(Exception):

@@ -1,9 +1,9 @@
 import os
 import json
 
-from .db_handler import *
-from ._config import *
-from .curve import CurveAPI, PoolNotFound
+from curve_monitor.db_handler import *
+from curve_monitor._config import *
+from curve_monitor.curve import CurveAPI, PoolNotFound
 
 
 class CurveMonitorCLI:
