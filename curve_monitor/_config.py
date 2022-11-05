@@ -9,3 +9,7 @@ CURVE_POOL_BASEURL = "https://curve.fi/#/{network_id}/pools/{pool_id}"
 
 # Process:
 POLLING_PERIOD = 5  # Poll balances every 5 seconds
+
+# TELEGRAM SETUP:
+TELEGRAM_CHAT_IDS = [1823852648]
+# Telegram bot token should be stored as TELEGRAM_BOT_TOKEN environment var

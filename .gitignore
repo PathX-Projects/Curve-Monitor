@@ -154,3 +154,4 @@ cython_debug/
 
 # Project
 dev.txt
+logs/

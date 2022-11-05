@@ -1,0 +1,11 @@
+⚠ <b>Curve Composition Alert</b> ⚠
+
+<b>{condition_token}</b> composition <em><b>{condition}</b></em> of pool TVL in <b><a href="{pool_url}">{pool_name}</a></b>
+
+<b>Pool Address:</b> {pool_address}
+<b>Network:</b> {network}
+<b>Tag:</b> {tag}
+<b>Assets:</b> {assets}
+<b>Pool TVL:</b> {tvl}
+
+<b>Composition Breakdown:</b>

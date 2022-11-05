@@ -11,6 +11,7 @@ from curve_monitor._config import *
 from curve_monitor._logger import logged, logger
 
 from slack_sdk import WebClient
+from telebot import TeleBot
 
 # https://slack.dev/python-slack-sdk/web/index.html#messaging
 
@@ -39,6 +40,12 @@ class TimeDelta(timedelta):
         return days, hours, mins, sec
 
 
+def load_template(filename: str) -> str:
+    """Load the template for the message blocks"""
+    with open(join(dirname(__file__), 'templates', filename), "r", encoding='utf-8') as f:
+        return f.read()
+
+
 class SlackClient(WebClient):
     def __init__(self, oauth_token: str, workspace_channel: str):
         """
@@ -51,11 +58,11 @@ class SlackClient(WebClient):
 
     @logged
     def composition_alert(self, network: str, tag: str, pool_data: dict, tokens_data: dict, alert_data: dict) -> None:
-        template = self.load_template('composition_alert.txt')
+        template = load_template('composition_alert.txt')
         # print(timedelta(seconds=(proposal.end - proposal.start)).__str__())
 
         blocks = template.format(
-            pool_url=CURVE_POOL_BASEURL.format(network_id=network, pool_id=pool_data['id']),
+            pool_url=pool_data['poolUrls']['deposit'][1],
             pool_name=pool_data['name'],
             pool_address=pool_data['address'],
             network=network,
@@ -67,11 +74,11 @@ class SlackClient(WebClient):
             composition_breakdown=self._prepare_composition_breakdown(tokens_data)
         )
         self.chat_postMessage(channel=self.channel, text=f"Curve Composition Alert", blocks=blocks)
-        logger.info(f'Composition alert sent to slack workspace "{self.channel}"')
+        logger.info(f'Composition alert sent to Slack workspace: {self.channel}')
 
     def _prepare_composition_breakdown(self, tokens_data: dict) -> str:
         output = ""
-        template = self.load_template('composition_breakdown.txt')
+        template = load_template('composition_breakdown.txt')
         for token, data in tokens_data.items():
             output += template.format(
                 token_address=data['address'].lower(),
@@ -81,8 +88,31 @@ class SlackClient(WebClient):
             )
         return output
 
-    @staticmethod
-    def load_template(filename: str) -> str:
-        """Load the template for the message blocks"""
-        with open(join(dirname(__file__), 'templates', filename), "r", encoding='utf-8') as f:
-            return f.read()
+
+class TelegramClient(TeleBot):
+    def __init__(self, bot_token: str):
+        super().__init__(token=bot_token)
+
+    def composition_alert(self, network: str, tag: str, pool_data: dict, tokens_data: dict, alert_data: dict) -> None:
+        text = load_template('composition_alert_tg.txt').format(
+            pool_url=pool_data['poolUrls']['deposit'][1],
+            pool_name=pool_data['name'],
+            pool_address=pool_data['address'],
+            network=network,
+            tag=tag,
+            assets=", ".join([c['symbol'] for c in pool_data['coins']]),
+            tvl=f"${int(pool_data['usdTotal']):,}",  # should be string formatted like so: $9,999,999.00
+            condition_token=alert_data['condition']['token'],
+            condition=f"{alert_data['condition']['operator'].lower()} {alert_data['condition']['target_pct']}%",
+        )
+        text += self._prepare_composition_breakdown(tokens_data)
+        for _id in TELEGRAM_CHAT_IDS:
+            self.send_message(chat_id=_id, text=text, parse_mode='html')
+            logger.info(f'Composition alert sent to Telegram chat ID: {_id}')
+
+    def _prepare_composition_breakdown(self, tokens_data: dict) -> str:
+        output = []
+        for token, data in tokens_data.items():
+            output.append(f"\n- <b>{token}:</b> ${int(data['balance_usd']):,} <b>({data['composition'] * 100:.1f}%)</b>")
+        return "".join(output)
+

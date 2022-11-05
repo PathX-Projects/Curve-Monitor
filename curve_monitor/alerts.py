@@ -5,10 +5,8 @@ from os import getenv
 from curve_monitor.curve import CurveAPI
 from curve_monitor._config import POLLING_PERIOD
 from curve_monitor._logger import logged, logger
-from curve_monitor.slack import SlackClient
+from curve_monitor.output import SlackClient, TelegramClient
 from curve_monitor.db_handler import load_alerts, del_alert
-
-
 
 
 class AlertsProcess:
@@ -16,6 +14,7 @@ class AlertsProcess:
         self.api = CurveAPI()
         self.slack = SlackClient(oauth_token=getenv('SLACK_OAUTH_TOKEN'),
                                  workspace_channel=getenv('SLACK_CHANNEL'))
+        self.tg = TelegramClient(bot_token=getenv('TELEGRAM_BOT_TOKEN'))
 
     @logged
     def poll(self):
@@ -33,6 +32,8 @@ class AlertsProcess:
                     or alert['condition']['operator'].lower() == "below" and condition_token_composition <= alert['condition']['target_pct']:
                 self.slack.composition_alert(network=alert['network_id'], tag=alert['tag_id'], pool_data=pool_data,
                                              tokens_data=tokens_usd, alert_data=alert)
+                self.tg.composition_alert(network=alert['network_id'], tag=alert['tag_id'], pool_data=pool_data,
+                                          tokens_data=tokens_usd, alert_data=alert)
                 del_alert(alert['id'])
 
     @logged

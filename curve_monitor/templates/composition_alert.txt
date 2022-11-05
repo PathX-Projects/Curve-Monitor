@@ -3,7 +3,7 @@
         "type": "header",
         "text": {{
             "type": "plain_text",
-            "text": ":bangbang: Curve Pool Composition Alert :bangbang:",
+            "text": ":warning: Curve Pool Composition Alert :warning:",
             "emoji": true
         }}
     }},
