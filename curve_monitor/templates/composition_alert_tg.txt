@@ -1,4 +1,4 @@
-⚠ <b>Curve Composition Alert</b> ⚠
+⚠️ <b>Curve Composition Alert</b> ⚠️
 
 <b>{condition_token}</b> composition <em><b>{condition}</b></em> of pool TVL in <b><a href="{pool_url}">{pool_name}</a></b>
 

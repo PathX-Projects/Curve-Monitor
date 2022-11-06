@@ -23,6 +23,9 @@
 <p align="center">
   <b>Curve Monitor</b> is a project inspired by <b>hal.xyz</b> built with Python designed to allow users to receive <b>alerts</b> regarding <b>Curve pool performance</b> to their favorite messaging platforms like <b>Slack</b> and <b>Telegram</b>.
 </p>
+<p align="center">
+  <b>Current Supported Messaging Platforms:</b> Slack, Telegram
+</p>
 
 ## ⚙️ Installation
 ___
@@ -50,7 +53,7 @@ Launch the software using the -m flag to run the module from the **\_\_main\_\_.
 ```bash
 python3 -m curve_monitor
 ```
-(Optional) Run the UNIX CLI tool to manage alerts:
+(Optional - Requires Mac or Linux OS) Run the UNIX CLI tool to manage alerts:
 ```bash
 bash unix_cli.sh
 ```
