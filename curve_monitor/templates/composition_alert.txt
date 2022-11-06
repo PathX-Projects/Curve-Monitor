@@ -1,0 +1,85 @@
+[
+    {{
+        "type": "header",
+        "text": {{
+            "type": "plain_text",
+            "text": ":warning: Curve Pool Composition Alert :warning:",
+            "emoji": true
+        }}
+    }},
+    {{
+        "type": "section",
+        "text": {{
+            "type": "mrkdwn",
+            "text": "*<{pool_url}|{pool_name}>*"
+        }},
+        "accessory": {{
+            "type": "image",
+            "image_url": "https://curve.fi/logo.png",
+            "alt_text": "curve_logo"
+        }}
+    }},
+    {{
+        "type": "divider"
+    }},
+    {{
+        "type": "section",
+        "text": {{
+            "type": "mrkdwn",
+            "text": "*Pool Address:*\n{pool_address}"
+        }}
+    }},
+    {{
+        "type": "section",
+        "fields": [
+            {{
+                "type": "mrkdwn",
+                "text": "*Network:*\n{network}"
+            }},
+            {{
+                "type": "mrkdwn",
+                "text": "*Tag:*\n{tag}"
+            }}
+        ]
+    }},
+    {{
+        "type": "section",
+        "fields": [
+            {{
+                "type": "mrkdwn",
+                "text": "*Assets:*\n{assets}"
+            }},
+            {{
+                "type": "mrkdwn",
+                "text": "*TVL:*\n{tvl}"
+            }}
+        ]
+    }},
+    {{
+        "type": "header",
+        "text": {{
+            "type": "plain_text",
+            "text": "Composition Breakdown",
+            "emoji": true
+        }}
+    }},
+    {composition_breakdown}
+    {{
+        "type": "header",
+        "text": {{
+            "type": "plain_text",
+            "text": "Condition Satisfied:",
+            "emoji": true
+        }}
+    }},
+    {{
+        "type": "section",
+        "text": {{
+            "type": "mrkdwn",
+            "text": "*{condition_token}* composition _*{condition}*_ of pool TVL"
+        }}
+    }},
+    {{
+        "type": "divider"
+    }}
+]

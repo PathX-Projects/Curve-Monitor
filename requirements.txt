@@ -1,0 +1,5 @@
+ratelimit
+slack_sdk
+python-dotenv
+PyTelegramBotAPI
+tg-logger

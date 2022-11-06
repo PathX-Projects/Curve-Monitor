@@ -1,0 +1,14 @@
+{{
+    "type": "context",
+    "elements": [
+        {{
+            "type": "image",
+            "image_url": "https://cdn.jsdelivr.net/gh/curvefi/curve-assets/images/assets/{token_address}.png",
+            "alt_text": "token_img"
+        }},
+        {{
+            "type": "mrkdwn",
+            "text": "*{token_symbol}:*  {supply} *({composition_pct}%)*"
+        }}
+    ]
+}},

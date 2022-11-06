@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "network_id": "ethereum",
+    "tag_id": "factory",
+    "pool_address": "0xe6b5CC1B4b47305c58392CE3D359B10282FC36Ea",
+    "condition": {
+      "token": "USDD",
+      "operator": "below",
+      "target_pct": 60
+    }
+  }
+]
