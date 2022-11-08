@@ -59,6 +59,19 @@ class AlertsProcess:
         logger.info('Alerts process started.')
 
         while True:
-            self.poll()
+            
+            # Exponential backoff of 5
+            wait = 5  # wait seconds
+            for i in range(5):  # 5 retries maximum
+                try:
+                    self.poll()
+                    break
+                except Exception as e:
+                    if i == 4:
+                        logger.critical(f'{i+1} Retries exhausted for error when polling alerts - See logs')
+                        raise e
+                    else:
+                        sleep(wait)
+                        wait *= 5
             
             sleep(POLLING_PERIOD)

@@ -36,6 +36,6 @@ def logged(_func):
         try:
             return _func(*args, **kwargs)
         except Exception as e:
-            logger.exception(f'Error occurred when running function {_func.__name__}', exc_info=e)
+            logger.error(f'Error occurred when running function {_func.__name__}', exc_info=e)
             raise e
     return wrapper
