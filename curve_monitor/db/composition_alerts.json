@@ -9,5 +9,16 @@
       "operator": "below",
       "target_pct": 60
     }
+  },
+  {
+    "id": 3,
+    "network_id": "ethereum",
+    "tag_id": "factory",
+    "pool_address": "0x87650d7bbfc3a9f10587d7778206671719d9910d",
+    "condition": {
+      "token": "OUSD",
+      "operator": "above",
+      "target_pct": 60.0
+    }
   }
 ]
