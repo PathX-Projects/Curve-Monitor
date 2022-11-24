@@ -28,8 +28,8 @@ class AlertsProcess:
                           for c in pool_data['coins']}
 
             condition_token_composition = tokens_usd[alert['condition']['token']]['composition'] * 100
-            if alert['condition']['operator'].lower() == "above" and condition_token_composition >= alert['condition']['target_pct'] \
-                    or alert['condition']['operator'].lower() == "below" and condition_token_composition <= alert['condition']['target_pct']:
+            if (alert['condition']['operator'].lower() == "above" and condition_token_composition >= alert['condition']['target_pct']) \
+                    or (alert['condition']['operator'].lower() == "below" and condition_token_composition <= alert['condition']['target_pct']):
                 self.slack.composition_alert(network=alert['network_id'], tag=alert['tag_id'], pool_data=pool_data,
                                              tokens_data=tokens_usd, alert_data=alert)
                 self.tg.composition_alert(network=alert['network_id'], tag=alert['tag_id'], pool_data=pool_data,
@@ -58,8 +58,10 @@ class AlertsProcess:
     def run(self):
         logger.info('Alerts process started.')
 
+        enum = 0
         while True:
-            
+            logger.debug(f'{enum + 1} | Polling Curve.fi Pools')
+
             # Exponential backoff of 5
             wait = 5  # wait seconds
             for i in range(5):  # 5 retries maximum
@@ -73,5 +75,6 @@ class AlertsProcess:
                     else:
                         sleep(wait)
                         wait *= 5
-            
+
+            enum += 1
             sleep(POLLING_PERIOD)

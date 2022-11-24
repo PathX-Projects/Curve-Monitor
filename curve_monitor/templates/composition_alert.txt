@@ -15,7 +15,7 @@
         }},
         "accessory": {{
             "type": "image",
-            "image_url": "https://curve.fi/logo.png",
+            "image_url": "https://classic.curve.fi/logo.png",
             "alt_text": "curve_logo"
         }}
     }},

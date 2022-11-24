@@ -20,7 +20,7 @@ file_handler.setLevel(logging.WARN)
 # Setup stream handler
 stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
-stream_handler.setLevel(logging.INFO)
+stream_handler.setLevel(logging.DEBUG)
 
 # Add handlers
 logger.addHandler(file_handler)
